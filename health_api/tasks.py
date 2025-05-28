@@ -49,8 +49,8 @@ Health Record System Team
         result = send_mail(
             subject=subject,
             message=message,
-            from_email='blessyvarghese0326@gmail.com',  # Explicit email
-            recipient_list=['blessyvarghese0326@gmail.com'],
+            from_email=[doctor_email],  # Explicit email
+            recipient_list=[doctor_email],
             fail_silently=False,
         )
 

@@ -65,7 +65,7 @@ class DoctorRegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['username', 'password', 'confirm_password', 'email', 'first_name', 'last_name']
+        fields = ['username', 'password', 'confirm_password', 'email', 'first_name', 'last_name','medical_license']
         extra_kwargs = {
             'email': {'required': True},
             'first_name': {'required': True},
@@ -91,6 +91,7 @@ class DoctorRegistrationSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         validated_data.pop('confirm_password')
+        validated_data.pop('medical_license')
         validated_data['password'] = make_password(validated_data['password'])
         validated_data['is_doctor'] = True
         user = User.objects.create(**validated_data)
