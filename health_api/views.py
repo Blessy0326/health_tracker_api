@@ -105,8 +105,7 @@ def assign_patient_to_doctor(request):
     """
     doctor_id = request.data.get('doctor_id')
     patient_id = request.data.get('patient_id')
-    print(doctor_id)
-    print(patient_id)
+
 
     if not doctor_id or not patient_id:
         return Response({
@@ -116,8 +115,6 @@ def assign_patient_to_doctor(request):
     try:
         doctor = User.objects.get(id=doctor_id)
         patient = User.objects.get(id=patient_id)
-        print(doctor)
-        print(patient)
     except User.DoesNotExist:
         return Response({
             'error': 'Invalid doctor or patient ID'
